@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .container {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        .version {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #ffd700;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 CI/CD Pipeline Demo</h1>
+        <p>This page is automatically deployed using a CI/CD pipeline.</p>
+
+        <div class="version">
+            Version: <span id="version">v1.0</span>
+        </div>
+
+        <div class="version">
+            Last Updated: <span id="time"></span>
+        </div>
+
+        <br>
+        <button onclick="updateVersion()">Simulate Change</button>
+
+        <div class="footer">
+            DevOps Experiment 8 | Continuous Integration & Deployment
+        </div>
+    </div>
+
+    <script>
+        // Show current time (simulates deployment time)
+        document.getElementById("time").innerText = new Date().toLocaleString();
+
+        // Simulate version change (useful for testing pipeline updates)
+        function updateVersion() {
+            let versionText = document.getElementById("version");
+            let current = versionText.innerText.replace('v','').split('.');
+            let minor = parseInt(current[1]) + 1;
+            versionText.innerText = `v${current[0]}.${minor}`;
+        }
+    </script>
+
+</body>
+</html>

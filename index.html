@@ -1,83 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD Demo by Rufus</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            color: white;
-            text-align: center;
-            padding-top: 100px;
-        }
-        .container {
-            background: rgba(0,0,0,0.3);
-            padding: 30px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        h1 {
-            font-size: 2.5rem;
-        }
-        .version {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #ffd700;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            background: #ffd700;
-            color: black;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #ffcc00;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>DevOps CI/CD Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background: #00ffcc;
+      color: black;
+      font-weight: bold;
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00ddb3;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>🚀 CI/CD Pipeline Demo</h1>
-        <p>This page is automatically deployed using a CI/CD pipeline.</p>
+  <div class="card">
+    <h1>🚀 CI/CD Pipeline Active</h1>
+    <p>Automatically deployed using GitHub Actions</p>
 
-        <div class="version">
-            Version: <span id="version">v1.0</span>
-        </div>
-
-        <div class="version">
-            Last Updated: <span id="time"></span>
-        </div>
-
-        <br>
-        <button onclick="updateVersion()">Simulate Change</button>
-
-        <div class="footer">
-            DevOps Experiment 8 | Continuous Integration & Deployment
-        </div>
+    <div class="badge">
+      Version: <span id="version">v2.0</span>
     </div>
 
-    <script>
-        // Show current time (simulates deployment time)
-        document.getElementById("time").innerText = new Date().toLocaleString();
+    <div class="info">
+      Last Deployment:<br>
+      <span id="time"></span>
+    </div>
 
-        // Simulate version change (useful for testing pipeline updates)
-        function updateVersion() {
-            let versionText = document.getElementById("version");
-            let current = versionText.innerText.replace('v','').split('.');
-            let minor = parseInt(current[1]) + 1;
-            versionText.innerText = `v${current[0]}.${minor}`;
-        }
-    </script>
+    <button onclick="bumpVersion()">Update Version</button>
+
+    <div class="info" style="margin-top:30px; font-size:0.9rem;">
+      DevOps Experiment 8 | CI/CD Implementation
+    </div>
+  </div>
+
+  <script>
+    // Show deployment time
+    document.getElementById("time").innerText =
+      new Date().toLocaleString();
+
+    // Simple version increment
+    function bumpVersion() {
+      let v = document.getElementById("version");
+      let parts = v.innerText.replace('v','').split('.');
+      parts[1] = parseInt(parts[1]) + 1;
+      v.innerText = `v${parts[0]}.${parts[1]}`;
+    }
+  </script>
 
 </body>
 </html>
